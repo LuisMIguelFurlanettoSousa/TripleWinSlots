@@ -44,10 +44,9 @@ class CassaNiquel:
     def _display(self, amount_bet, result):
         rolos = [[random.choice(list(self.SIMBOLOS.keys())) for _ in range(3)] for _ in range(3)]
         
-        # Animação dos 3 rolos com desaceleração progressiva
         for i in range(3):
             self._spin_reel(rolos, i, result[i])
-            sleep(0.5)  # Pausa para dar o efeito de cada rolo parando separadamente
+            sleep(0.5) 
         
         print(self._emojize(result))
         if self._check_result_user(result):
@@ -56,19 +55,17 @@ class CassaNiquel:
             print('Foi quase, tente novamente')
 
     def _spin_reel(self, rolos, reel_index, final_symbol):
-        steps = random.randint(10, 20)  # Número de rotações do rolo
-        delay = 0.1  # Tempo inicial entre as rotações
+        steps = random.randint(10, 20)
+        delay = 0.1 
 
         for _ in range(steps):
-            # Gira os símbolos aleatórios do rolo
             rolos[reel_index] = [random.choice(list(self.SIMBOLOS.keys())) for _ in range(3)]
             self._print_rolos(rolos)
             sleep(delay)
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            delay += 0.05  # Aumenta o tempo entre rotações para simular desaceleração
+            delay += 0.05 
 
-        # Define o símbolo final do rolo
         rolos[reel_index] = [final_symbol] * 3
         self._print_rolos(rolos)
         sleep(0.5)
@@ -99,7 +96,6 @@ class CassaNiquel:
         self._update_balance(amount_bet, result, player)
 
 
-# Exemplo de uso:
 maquina1 = CassaNiquel(level=5)
 jogador1 = Player()
 maquina1.play(10, jogador1)
