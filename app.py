@@ -96,6 +96,6 @@ class CassaNiquel:
         self._update_balance(amount_bet, result, player)
 
 
-maquina1 = CassaNiquel(level=5)
+maquina1 = CassaNiquel(level=2)
 jogador1 = Player()
 maquina1.play(10, jogador1)
